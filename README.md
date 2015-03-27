@@ -1,2 +1,2 @@
 # pmvc
-A desperated try to cut recorded tv shows
+Poor man's video cutter - a desperated try to clean up recorded tv shows
