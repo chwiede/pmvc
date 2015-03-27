@@ -1,0 +1,17 @@
+{
+    "menu": {
+        "file": {
+            "title": "Datei",
+            "open": "Öffnen",
+            "save": "Speichern",
+            "saveas": "Speichern unter...",
+            "close": "Beenden",
+            "exportlist": "EDL exportieren"
+        } 
+    },
+    
+    "text": {
+        "wait": "Bitte warten...",
+        "cancel": "Abbrechen"
+    }
+}
