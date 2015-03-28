@@ -12,7 +12,6 @@ from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 
 from localization import LC
-from test.test_decimal import directory
 
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
