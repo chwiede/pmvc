@@ -5,22 +5,19 @@ import re
 import threading
 import subprocess
 
-from mainwidget import MainWidget
+from .mainwidget import MainWidget
+from .localization import LC
 
 from PyQt5.QtGui import *
-from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 
-from localization import LC
-
-
-### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
-
-
-class MainWindow(QMainWindow):    
+class MainWindow(QMainWindow):
     
-    def __init__(self, parent=None):
+    def __init__(self, icons_folder, parent=None):
         super(MainWindow, self).__init__(parent)
+
+        # Misc
+        self.icons_folder = icons_folder
         
         # Settings
         self.setWindowTitle("Poor Man's Video Cutter")
@@ -75,10 +72,12 @@ class MainWindow(QMainWindow):
     def getIcon(self, icon):
         if icon == None:
             return None
-        
-        selfPath = os.path.dirname(__file__)        
-        iconPath = os.path.join(selfPath, 'icons', icon)
-        return QIcon(iconPath)                     
+
+        iconPath = os.path.join(self.icons_folder, '../icons', icon)
+        if not os.path.isfile(iconPath):
+            return None
+
+        return QIcon(iconPath)
 
 
     def createMenuItem(self, parent, title, icon, shortcut, callback):
@@ -117,7 +116,7 @@ class MainWindow(QMainWindow):
         filter = 'Matroska MKV (*.mkv)'
         suggest = self.changeFileExtension(self.currentFile, ".cut.mkv")
         print(suggest)        
-        filename, filter = QFileDialog.getSaveFileName(directory = suggest, filter=filter)        
+        filename, filter = QFileDialog.getSaveFileName(directory = suggest, filter=filter)
         if filename == '':
             return
 
@@ -155,7 +154,7 @@ class MainWindow(QMainWindow):
         #option for directory: directory='/mnt/', 
         filter = 'EDL Cutlist (*.edl)'
         suggest = self.getEDLFile(self.currentFile)        
-        filename, filter = QFileDialog.getSaveFileName(directory = suggest, filter=filter)        
+        filename, filter = QFileDialog.getSaveFileName(directory = suggest, filter=filter)
         if filename == '':
             return
         

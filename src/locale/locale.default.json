@@ -1,0 +1,17 @@
+{
+    "menu": {
+        "file": {
+            "title": "File",
+            "open": "Open",
+            "save": "Save",
+            "saveas": "Save as...",
+            "close": "Quit",
+            "exportlist": "EDL export"
+        } 
+    },
+    
+    "text": {
+        "wait": "Be patient...",
+        "cancel": "Cancel"
+    }
+}

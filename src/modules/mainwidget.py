@@ -4,27 +4,9 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtMultimedia import *
-from PyQt5.QtMultimediaWidgets import QVideoWidget
-
-from videowidget import VideoWidget
-from cutwidget import CutWidget
-
-### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
-
-class dumbSlider(QSlider):
-    
-    def __init__(self, parent=None):
-        super(QSlider, self).__init__(parent)
-    
-    #range_changed = pyqtSignal(int, int, name='rangeChanged')
-    keyPressed = pyqtSignal(QKeyEvent)
-    
-    def keyPressEvent(self, event):
-        self.keyPressed.emit(event)
-    
-
-### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
-
+from .videowidget import VideoWidget
+from .cutwidget import CutWidget
+from .dumpslider import DumbSlider
 
 class MainWidget(QWidget):
     
@@ -46,7 +28,7 @@ class MainWidget(QWidget):
         self.createPlayer()
         
         # Slider
-        self.slider = dumbSlider(Qt.Horizontal)
+        self.slider = DumbSlider(Qt.Horizontal)
         self.slider.sliderMoved.connect(self.seek)
         self.slider.keyPressed.connect(self.keyPressEvent)
         self.grid.addWidget(self.slider, 2, 3)
@@ -77,8 +59,8 @@ class MainWidget(QWidget):
 
     def Open(self, file):
         url = QUrl.fromLocalFile(file)
-        mediacnt = QMediaContent(url)
-        self.player.setMedia(mediacnt)
+        media_content = QMediaContent(url)
+        self.player.setMedia(media_content)
         self.player.play()
         self.player.pause()
         

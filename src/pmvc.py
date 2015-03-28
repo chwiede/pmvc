@@ -1,26 +1,21 @@
 #!/usr/bin/env python
 
-# simple.py
-
-# packages:
-# * phonon-qt5
-# * python-pyqt5
-# * qt5-multimedia
-
 import os
 import sys
-import time
-import threading
-
-from mainwindow import MainWindow
-from PyQt5.QtWidgets import *
-
-### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
+from PyQt5.QtWidgets import QApplication
+from modules.mainwindow import MainWindow
+from modules.localization import localize
 
 if __name__ == '__main__':
+    # setup localization
+    localize('./locale')
+
+    # load app
     app = QApplication(sys.argv)
 
-    mainWindow = MainWindow()
+    # start app
+    mainWindow = MainWindow(os.path.abspath('icons'))
     mainWindow.show()
-    
+
+    # bye bye
     sys.exit(app.exec_())
