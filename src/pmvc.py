@@ -8,7 +8,7 @@ from modules.localization import localize
 
 if __name__ == '__main__':
     # setup localization
-    localize('./locale')
+    localize(os.path.abspath('./locale'))
 
     # load app
     app = QApplication(sys.argv)

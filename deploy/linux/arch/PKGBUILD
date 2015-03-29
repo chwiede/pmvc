@@ -1,0 +1,44 @@
+# Maintainer: Christoph Wiedemann <chwiede@gmail.com>
+pkgname=pmvc
+pkgdesc="Poor mans video cutter"
+pkgver=0.1
+pkgrel=1
+url="https://github.com/chwiede/pmvc"
+arch=('x86_64' 'i686')
+license=('MIT')
+depends=('python'
+         'mkvtoolnix-cli'
+         'pyqt5-common'
+         'python-pyqt5'
+         'qt5-multimedia'
+         'gstreamer0.10-ffmpeg'
+         'ffmpeg')
+
+optdepends=()
+makedepends=()
+conflicts=()
+replaces=()
+backup=()
+
+srcfolder='../../../../src'
+
+pkgver() {
+    cd $srcfolder
+    git describe --long | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g' || echo "0.1"
+}
+
+build() {
+    cd $srcfolder
+}
+
+package() {
+    cd $srcfolder
+
+    mkdir -p $pkgdir/opt/pmvc/modules
+    mkdir -p $pkgdir/opt/pmvc/locale
+
+    cp -R *.py $pkgdir/opt/pmvc/
+    cp -R icons $pkgdir/opt/pmvc/
+    cp -R locale $pkgdir/opt/pmvc/
+    cp -R modules/*.py $pkgdir/opt/pmvc/modules
+}

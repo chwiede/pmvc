@@ -56,3 +56,7 @@ target/
 # PyCharm
 .idea/
 
+# Deploy Arch Linux
+deploy/linux/arch/pkg
+deploy/linux/arch/src
+deploy/linux/arch/*.tar.xz
