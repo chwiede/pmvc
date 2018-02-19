@@ -8,13 +8,17 @@ from modules.localization import localize
 
 if __name__ == '__main__':
     # setup localization
-    localize(os.path.dirname(__file__) + '/locale')
+    locale_path = os.path.join(os.path.dirname(__file__), 'locale')
+    print("loading locale from %s..." % locale_path)
+    localize(locale_path)
 
     # load app
     app = QApplication(sys.argv)
 
     # start app
-    mainWindow = MainWindow(os.path.dirname(__file__) + '/icons')
+    icons_path = os.path.join(os.path.dirname(__file__), 'icons')
+    print("loading icons from %s..." % icons_path)
+    mainWindow = MainWindow(icons_path)
     mainWindow.show()
 
     # bye bye
