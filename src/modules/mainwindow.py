@@ -186,10 +186,10 @@ class MainWindow(QMainWindow):
         
             
     def open(self):
-        videoFileFilters = (
+        videoFileFilters = [
             "Matroska MKV (*.mkv)",
-            "AVI-Container (*.avi)" 
-        )
+            "AVI-Container (*.avi)",
+        ]
         
         vidfilter = ";;".join(videoFileFilters)
         filename, filter = QFileDialog.getOpenFileName(directory = self.lastFolder, filter=vidfilter)
